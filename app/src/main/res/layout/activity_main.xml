@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
     <ImageView
         android:id="@+id/bottle"
         android:layout_width="493dp"
@@ -16,4 +15,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.498"
         app:srcCompat="@drawable/images" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
