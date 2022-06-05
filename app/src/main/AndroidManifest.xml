@@ -13,7 +13,7 @@
             android:name=".Dare"
             android:exported="false" />
         <activity
-            android:name=".Trust"
+            android:name=".Truth"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

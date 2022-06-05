@@ -43,14 +43,14 @@ class MainActivity : AppCompatActivity() {
         val builder=AlertDialog.Builder(this@MainActivity)
         builder.setTitle("測試測試")
             .setMessage("真心話 or 大冒險")
-            .setPositiveButton("真心話"){_, _ -> trust() }
+            .setPositiveButton("真心話"){_, _ -> truth() }
             .setNegativeButton("大冒險"){_, _ -> dare() }
             .show()
     }
-    fun trust(){
+    fun truth(){
         val intent = Intent()
         intent.setClass(this@MainActivity,
-            Trust::class.java)
+            Truth::class.java)
         startActivity(intent)
     }
     fun dare(){
