@@ -4,8 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/User/AndroidStudioProjects/truthOrDareChooser/app/src/main/res/layout/activity_dare.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/truthOrDareChooser/app/src/main/res/layout/activity_decide.xml" value="0.358695652173913" />
         <entry key="..\:/Users/User/AndroidStudioProjects/truthOrDareChooser/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
         <entry key="..\:/Users/User/AndroidStudioProjects/truthOrDareChooser/app/src/main/res/layout/activity_trust.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/truthOrDareChooser/app/src/main/res/layout/activity_truth.xml" value="0.358695652173913" />
       </map>
     </option>
   </component>
