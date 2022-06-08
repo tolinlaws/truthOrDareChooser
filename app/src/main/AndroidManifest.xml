@@ -19,6 +19,9 @@
             android:name=".Decide"
             android:exported="false" />
         <activity
+            android:name=".Wheel"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

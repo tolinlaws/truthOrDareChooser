@@ -1,9 +1,11 @@
 package finalProject.teamSeven.truthordarechooser
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.view.isVisible
 import kotlin.random.Random
 
 class Truth : AppCompatActivity() {
@@ -25,11 +27,16 @@ class Truth : AppCompatActivity() {
         submit_T.setOnClickListener{show_question()}
         text=findViewById(R.id.result)
         val ret:Button= findViewById(R.id.return_back)
-        ret.setOnClickListener{finish()}
+        ret.setOnClickListener{toMain()}
     }
     private fun show_question()
     {
         val C= Random.nextInt(1, 10)
         text.setText(question[C])
+    }
+    private fun toMain() {
+        intent.setClass(this@Truth,
+            MainActivity::class.java)
+        startActivity(intent)
     }
 }

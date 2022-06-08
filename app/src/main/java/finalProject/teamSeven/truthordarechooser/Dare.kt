@@ -27,11 +27,16 @@ class Dare : AppCompatActivity() {
         submit_D.setOnClickListener{show_question()}
         text=findViewById(R.id.result)
         val ret: Button = findViewById(R.id.return_back)
-        ret.setOnClickListener{finish()}
+        ret.setOnClickListener{toMain()}
     }
     private fun show_question()
     {
         val C= Random.nextInt(1, 10)
         text.setText(question[C])
+    }
+    private fun toMain() {
+        intent.setClass(this@Dare,
+            MainActivity::class.java)
+        startActivity(intent)
     }
 }

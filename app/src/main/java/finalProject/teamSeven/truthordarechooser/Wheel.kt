@@ -24,7 +24,7 @@ class Wheel : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wheel)
         wheel=findViewById(R.id.wheel)
-        wheel.setImageResource(R.drawable.images)
+        wheel.setImageResource(R.drawable.wheel)
         wheel.setOnClickListener{
             val currentTime = SystemClock.uptimeMillis()
             if (currentTime - lastClickTime >  delay) {
@@ -37,7 +37,7 @@ class Wheel : AppCompatActivity() {
         val R = Random.nextInt(1, 25)
         val F = Random.nextFloat() * 10000
         angle = F/R
-        val round = wheel.animate().rotationBy(F / R).setDuration(2500)
+        val round = wheel.animate().rotationBy((F / R)+3600).setDuration(2500)
             .setInterpolator(LinearInterpolator())
         round.start()
 
@@ -59,7 +59,7 @@ class Wheel : AppCompatActivity() {
         Toast.makeText(this, "${angle}", LENGTH_LONG).show()
         var angleInt: Int = angle.roundToInt()
         //odd: truth, even:dare
-        if (angleInt % 2 == 0){
+        if (((angleInt%360)/45)%2  == 1){
             builder.setTitle("大冒險")
                 //.setMessage("真心話 or 大冒險")
                 //.setPositiveButton("真心話"){_, _ -> truth() }
@@ -70,7 +70,7 @@ class Wheel : AppCompatActivity() {
             builder.setTitle("真心話")
                 //.setMessage("真心話 or 大冒險")
                 //.setPositiveButton("真心話"){_, _ -> truth() }
-                .setNegativeButton("真心話"){_, _ -> dare() }
+                .setNegativeButton("真心話"){_, _ -> truth() }
                 .show()
         }
     }
