@@ -5,17 +5,21 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.SystemClock
 import android.view.animation.LinearInterpolator
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import kotlin.math.roundToInt
 import kotlin.random.Random
 
 class Wheel : AppCompatActivity() {
     lateinit var wheel: ImageView
+    lateinit var Truthbtn: Button
+    lateinit var Darebtn: Button
     val delay: Long = 5000
     var lastClickTime: Long = 0
     var angle:Float = 0.0F
@@ -24,12 +28,22 @@ class Wheel : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wheel)
         wheel=findViewById(R.id.wheel)
+        Truthbtn=findViewById(R.id.Truth)
+        Darebtn=findViewById(R.id.Dare)
         wheel.setImageResource(R.drawable.wheel)
+        Truthbtn.isVisible=false
+        Darebtn.isVisible= false
+        Truthbtn.isEnabled=false
+        Darebtn.isEnabled=false
+        Truthbtn.setOnClickListener{truth()}
+        Darebtn.setOnClickListener{dare()}
         wheel.setOnClickListener{
-            val currentTime = SystemClock.uptimeMillis()
-            if (currentTime - lastClickTime >  delay) {
-                lastClickTime = currentTime;
-                rotate()
+            if(!Truthbtn.isVisible && !Darebtn.isVisible){
+                val currentTime = SystemClock.uptimeMillis()
+                if (currentTime - lastClickTime >  delay) {
+                    lastClickTime = currentTime;
+                    rotate()
+                }
             }
         }
     }
@@ -56,36 +70,25 @@ class Wheel : AppCompatActivity() {
     fun stop_rotate()
     {
         val builder= AlertDialog.Builder(this@Wheel)
-        Toast.makeText(this, "${angle}", LENGTH_LONG).show()
         var angleInt: Int = angle.roundToInt()
         //odd: truth, even:dare
         if (((angleInt%360)/45)%2  == 1){
-            builder.setTitle("大冒險")
-                //.setMessage("真心話 or 大冒險")
-                //.setPositiveButton("真心話"){_, _ -> truth() }
-                .setNegativeButton("大冒險"){_, _ -> dare() }
-                .show()
+            Darebtn.isVisible=true
+            Darebtn.isEnabled=true
         }
         else{
-            builder.setTitle("真心話")
-                //.setMessage("真心話 or 大冒險")
-                //.setPositiveButton("真心話"){_, _ -> truth() }
-                .setNegativeButton("真心話"){_, _ -> truth() }
-                .show()
+            Truthbtn.isVisible=true
+            Truthbtn.isEnabled=true
         }
     }
     fun truth(){
         val intent = Intent()
-        /*傳遞angle到intent*/
-        intent.putExtra("angle",angle)
         intent.setClass(this@Wheel,
             Truth::class.java)
         startActivity(intent)
     }
     fun dare(){
         val intent = Intent()
-        /*傳遞angle到intent*/
-        intent.putExtra("angle",angle)
         intent.setClass(this@Wheel,
             Dare::class.java)
         startActivity(intent)

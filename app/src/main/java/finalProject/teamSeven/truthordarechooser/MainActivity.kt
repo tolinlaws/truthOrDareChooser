@@ -34,10 +34,11 @@ class MainActivity : AppCompatActivity() {
         bottle.setOnClickListener{
             val currentTime = SystemClock.uptimeMillis()
             if (currentTime - lastClickTime >  delay) {
-                define.isClickable=false
-                goWheel.isVisible=false
-                lastClickTime = currentTime;
-                rotate()
+                if (!goWheel.isVisible) {
+                    define.isClickable = false
+                    lastClickTime = currentTime;
+                    rotate()
+                }
             }
         }
     }

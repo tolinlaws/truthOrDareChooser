@@ -1,5 +1,6 @@
 package finalProject.teamSeven.truthordarechooser
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -59,7 +60,12 @@ class Dare : AppCompatActivity() {
         //submit_D.setOnClickListener{show_question()}
         text=findViewById(R.id.result)
         val ret: Button = findViewById(R.id.return_back)
-        ret.setOnClickListener{finish()}
+        ret.setOnClickListener{
+            val intent = Intent()
+            intent.setClass(this@Dare,
+                MainActivity::class.java)
+            startActivity(intent)
+        }
         show_question()
     }
     private fun show_question()
