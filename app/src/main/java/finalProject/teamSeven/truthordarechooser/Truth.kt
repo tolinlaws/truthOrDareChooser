@@ -3,8 +3,10 @@ package finalProject.teamSeven.truthordarechooser
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.KeyEvent
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import kotlin.random.Random
 
 class Truth : AppCompatActivity() {
@@ -118,7 +120,7 @@ class Truth : AppCompatActivity() {
             finish()
             val intent = Intent()
             intent.setClass(this@Truth,
-                MainActivity::class.java)
+                Bottle::class.java)
             startActivity(intent)
         }
         show_question()
@@ -127,5 +129,25 @@ class Truth : AppCompatActivity() {
     {
         val C= Random.nextInt(1, question.size-1)
         text.setText(question[C])
+    }
+    private var exitTime: Long = 0
+    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.action === KeyEvent.ACTION_DOWN) {
+            if (System.currentTimeMillis() - exitTime > 3000) {
+                Toast.makeText(applicationContext, "再按一次退出此程式", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(applicationContext, "${activities.size}", Toast.LENGTH_SHORT).show()
+                exitTime = System.currentTimeMillis()
+            } else {
+                val intent = Intent(applicationContext, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                intent.putExtra("EXIT", true)
+                startActivity(intent)
+                //finish()
+                //ActivityFinishAll()
+                System.exit(0)
+            }
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
     }
 }

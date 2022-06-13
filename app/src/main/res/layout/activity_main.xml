@@ -5,32 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <ImageView
-        android:id="@+id/bottle"
-        android:layout_width="493dp"
-        android:layout_height="404dp"
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_horizontal"
+        android:text="真心話大冒險！"
+        android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498"
-        app:srcCompat="@drawable/images" />
+        app:layout_constraintVertical_bias="0.4" />
+
+    <Button
+        android:id="@+id/goBottle"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="200dp"
+        android:text="開始"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/define"
-        android:layout_width="117dp"
-        android:layout_height="57dp"
-        android:text="自訂義"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/goWheel"
-        android:layout_width="143dp"
+        android:layout_width="150dp"
         android:layout_height="75dp"
-        android:layout_marginBottom="44dp"
-        android:text="真心話
-                        大冒險"
+        android:layout_marginBottom="120dp"
+        android:text="自訂題目"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
