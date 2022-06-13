@@ -37,6 +37,12 @@ class Wheel : AppCompatActivity() {
         Darebtn.isEnabled=false
         Truthbtn.setOnClickListener{truth()}
         Darebtn.setOnClickListener{dare()}
+        Truthbtn.setOnClickListener{
+            finish()
+            truth()}
+        Darebtn.setOnClickListener{
+            finish()
+            dare()}
         wheel.setOnClickListener{
             if(!Truthbtn.isVisible && !Darebtn.isVisible){
                 val currentTime = SystemClock.uptimeMillis()
@@ -88,6 +94,7 @@ class Wheel : AppCompatActivity() {
         startActivity(intent)
     }
     fun dare(){
+
         val intent = Intent()
         intent.setClass(this@Wheel,
             Dare::class.java)

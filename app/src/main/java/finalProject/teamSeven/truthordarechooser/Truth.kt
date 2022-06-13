@@ -115,6 +115,7 @@ class Truth : AppCompatActivity() {
         text=findViewById(R.id.result)
         val ret:Button= findViewById(R.id.return_back)
         ret.setOnClickListener{
+            finish()
             val intent = Intent()
             intent.setClass(this@Truth,
                 MainActivity::class.java)
