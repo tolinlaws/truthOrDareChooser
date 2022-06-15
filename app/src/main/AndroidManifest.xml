@@ -16,7 +16,7 @@
             android:name=".Truth"
             android:exported="false" />
         <activity
-            android:name=".Decide"
+            android:name=".Define"
             android:exported="false" />
         <activity
             android:name=".Wheel"

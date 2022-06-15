@@ -15,9 +15,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         define=findViewById(R.id.define)
+        define.setOnClickListener{
+            val intent = Intent(this@MainActivity, Define::class.java)
+            startActivity(intent)
+        }
         goBottle=findViewById(R.id.goBottle)
         goBottle.setOnClickListener{
-            val intent = Intent(this, Bottle::class.java)
+            val intent = Intent(this@MainActivity, Bottle::class.java)
             startActivity(intent)
         }
         if (intent.getBooleanExtra("EXIT", false)) {

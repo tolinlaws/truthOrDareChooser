@@ -17,7 +17,6 @@ import kotlin.system.exitProcess
 
 class Bottle : AppCompatActivity() {
     lateinit var bottle: ImageView
-    lateinit var define: Button
     lateinit var goWheel: Button
     lateinit var mediaPlayer: MediaPlayer
     val delay: Long = 5000
@@ -27,7 +26,6 @@ class Bottle : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bottle)
         bottle=findViewById(R.id.bottle)
-        define=findViewById(R.id.define)
         goWheel=findViewById(R.id.goWheel)
         goWheel.isVisible=false
         goWheel.setOnClickListener{
@@ -38,7 +36,7 @@ class Bottle : AppCompatActivity() {
             val currentTime = SystemClock.uptimeMillis()
             if (currentTime - lastClickTime >  delay) {
                 if (!goWheel.isVisible) {
-                    define.isClickable = false
+                    bottle.isEnabled=false
                     lastClickTime = currentTime
                     rotate()
                     mediaPlayer = MediaPlayer.create(this, R.raw.yee)
@@ -67,7 +65,6 @@ class Bottle : AppCompatActivity() {
 
             override fun onFinish() {
                 goWheel.isVisible=true
-                define.isClickable=true
             }
         }.start()
     }
@@ -82,22 +79,11 @@ class Bottle : AppCompatActivity() {
     }
     private var exitTime: Long = 0
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.action === KeyEvent.ACTION_DOWN) {
-            if (System.currentTimeMillis() - exitTime > 3000) {
-                Toast.makeText(applicationContext, "再按一次退出此程式", Toast.LENGTH_SHORT).show()
-                //Toast.makeText(applicationContext, "${activities.size}", Toast.LENGTH_SHORT).show()
-                exitTime = System.currentTimeMillis()
-            } else {
-                val intent = Intent(applicationContext, MainActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                intent.putExtra("EXIT", true)
-                startActivity(intent)
-                //finish()
-                //ActivityFinishAll()
-                exitProcess(0)
-            }
-            return true
-        }
+        val intent = Intent()
+        mediaPlayer.release()
+        intent.setClass(this@Bottle,
+            MainActivity::class.java)
+        startActivity(intent)
         return super.onKeyDown(keyCode, event)
     }
 }

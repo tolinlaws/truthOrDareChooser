@@ -45,8 +45,9 @@ class Wheel : AppCompatActivity() {
             finish()
             dare()}
         wheel.setOnClickListener{
-            if(!Truthbtn.isVisible && !Darebtn.isVisible){
+            if(!Truthbtn.isVisible || !Darebtn.isVisible){
                 val currentTime = SystemClock.uptimeMillis()
+                wheel.isEnabled=false
                 if (currentTime - lastClickTime >  delay) {
                     lastClickTime = currentTime
                     rotate()
@@ -60,7 +61,7 @@ class Wheel : AppCompatActivity() {
         val R = Random.nextInt(1, 25)
         val F = Random.nextFloat() * 10000
         angle = F/R
-        val round = wheel.animate().rotationBy((F / R)+3600).setDuration(5900)
+        val round = wheel.animate().rotationBy((F / R)+3600).setDuration(5400)
             .setInterpolator(LinearInterpolator())
         round.start()
 
@@ -105,20 +106,11 @@ class Wheel : AppCompatActivity() {
     private var exitTime: Long = 0
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.action === KeyEvent.ACTION_DOWN) {
-            if (System.currentTimeMillis() - exitTime > 3000) {
-                Toast.makeText(applicationContext, "再按一次退出此程式", Toast.LENGTH_SHORT).show()
-                //Toast.makeText(applicationContext, "${activities.size}", Toast.LENGTH_SHORT).show()
-                exitTime = System.currentTimeMillis()
-            } else {
-                val intent = Intent(applicationContext, Wheel::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                intent.putExtra("EXIT", true)
-                startActivity(intent)
-                //finish()
-                //ActivityFinishAll()
-                exitProcess(0)
-            }
-            return true
+            val intent = Intent()
+            mediaPlayer.release()
+            intent.setClass(this@Wheel,
+                MainActivity::class.java)
+            startActivity(intent)
         }
         return super.onKeyDown(keyCode, event)
     }

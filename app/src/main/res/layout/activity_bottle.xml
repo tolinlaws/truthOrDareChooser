@@ -17,14 +17,6 @@
         app:srcCompat="@drawable/images" />
 
     <Button
-        android:id="@+id/define"
-        android:layout_width="117dp"
-        android:layout_height="57dp"
-        android:text="自訂義"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/goWheel"
         android:layout_width="143dp"
         android:layout_height="75dp"
