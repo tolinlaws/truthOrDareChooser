@@ -28,6 +28,7 @@ class Bottle : AppCompatActivity() {
         bottle=findViewById(R.id.bottle)
         goWheel=findViewById(R.id.goWheel)
         goWheel.isVisible=false
+        mediaPlayer = MediaPlayer.create(this, R.raw.yee)
         goWheel.setOnClickListener{
             wheel()
         }
@@ -39,7 +40,6 @@ class Bottle : AppCompatActivity() {
                     bottle.isEnabled=false
                     lastClickTime = currentTime
                     rotate()
-                    mediaPlayer = MediaPlayer.create(this, R.raw.yee)
                     mediaPlayer.start()
                 }
             }
@@ -79,11 +79,11 @@ class Bottle : AppCompatActivity() {
     }
     private var exitTime: Long = 0
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-        val intent = Intent()
         mediaPlayer.release()
-        intent.setClass(this@Bottle,
-            MainActivity::class.java)
+        val intent = Intent(applicationContext, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
+        finish()
         return super.onKeyDown(keyCode, event)
     }
 }
