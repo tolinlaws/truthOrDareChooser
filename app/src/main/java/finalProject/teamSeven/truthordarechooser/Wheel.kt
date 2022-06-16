@@ -38,6 +38,7 @@ class Wheel : AppCompatActivity() {
         Darebtn.isEnabled=false
         Truthbtn.setOnClickListener{truth()}
         Darebtn.setOnClickListener{dare()}
+        mediaPlayer = MediaPlayer.create(this, R.raw.hahahahaha)
         Truthbtn.setOnClickListener{
             finish()
             truth()}
@@ -51,7 +52,6 @@ class Wheel : AppCompatActivity() {
                 if (currentTime - lastClickTime >  delay) {
                     lastClickTime = currentTime
                     rotate()
-                    mediaPlayer = MediaPlayer.create(this, R.raw.hahahahaha)
                     mediaPlayer.start()
                 }
             }
@@ -105,13 +105,11 @@ class Wheel : AppCompatActivity() {
     }
     private var exitTime: Long = 0
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.action === KeyEvent.ACTION_DOWN) {
-            val intent = Intent()
-            mediaPlayer.release()
-            intent.setClass(this@Wheel,
-                MainActivity::class.java)
-            startActivity(intent)
-        }
+        mediaPlayer.release()
+        val intent = Intent(applicationContext, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
+        finish()
         return super.onKeyDown(keyCode, event)
     }
 }

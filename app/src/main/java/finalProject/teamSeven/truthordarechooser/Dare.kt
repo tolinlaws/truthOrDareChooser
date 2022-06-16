@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import kotlin.random.Random
+import kotlin.system.exitProcess
 
 class Dare : AppCompatActivity() {
 
@@ -78,10 +79,10 @@ class Dare : AppCompatActivity() {
     private var exitTime: Long = 0
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.action === KeyEvent.ACTION_DOWN) {
-            val intent = Intent()
-            intent.setClass(this@Dare,
-                MainActivity::class.java)
+            val intent = Intent(applicationContext, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
+            finish()
         }
         return super.onKeyDown(keyCode, event)
     }

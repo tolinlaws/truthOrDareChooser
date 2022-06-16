@@ -16,9 +16,6 @@
             android:name=".Truth"
             android:exported="false" />
         <activity
-            android:name=".Define"
-            android:exported="false" />
-        <activity
             android:name=".Wheel"
             android:exported="false" />
         <activity
