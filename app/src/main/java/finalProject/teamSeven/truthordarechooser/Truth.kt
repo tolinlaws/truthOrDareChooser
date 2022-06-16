@@ -11,7 +11,7 @@ import kotlin.random.Random
 
 class Truth : AppCompatActivity() {
     val question=arrayOf("我在你眼裡什麼樣?",
-        "認同沒有性的愛情麼。",
+        "認同沒有性的愛情嗎?",
         "你做過最羞恥的一件事是?",
         "談過幾次戀愛?",
         "第一個喜歡的異性叫什麼名字?",
