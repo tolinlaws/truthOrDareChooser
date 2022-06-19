@@ -107,7 +107,10 @@ class Truth : AppCompatActivity() {
         "男(女)朋友和狗狗你選哪個?",
         "你最近一次做春夢是什麼樣子的。",
         "與喜歡的人見面，會穿成什麼樣?",
-        "和你做兄弟姐妹，最起碼的標準是什麼?")
+        "和你做兄弟姐妹，最起碼的標準是什麼?",
+        "你覺得在做的人誰最性感",
+        "你能接受約泡嗎",
+        "假設你可以跟全世界的某一個人一夜情，你會選誰")
     lateinit var text:TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
